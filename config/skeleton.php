@@ -5,24 +5,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Enable Module APIs
+    | Enable Skeleton Routes
     |--------------------------------------------------------------------------
     | This setting enable the API will be available or not
     */
-    'enabled' => env('PACKAGE_Skeleton_ENABLED', true),
-    
-    /*
-    |--------------------------------------------------------------------------
-    | Skeleton Group Root Prefix
-    |--------------------------------------------------------------------------
-    |
-    | This value will be added to all your routes from this package
-    | Example: APP_URL/{root_prefix}/api/skeleton/action
-    |
-    | Note: while adding prefix add closing ending slash '/'
-    */
-
-    'root_prefix' => 'test/',
+    'enabled' => env('PACKAGE_SKELETON_ENABLED', true),
 
     //** Model Config Point Do not Remove **//
 
@@ -31,7 +18,7 @@ return [
     | Repositories
     |--------------------------------------------------------------------------
     |
-    | This value will be used across systems where a repositoy instance is needed
+    | This value will be used across systems where a repository instance is needed
     */
 
     'repositories' => [

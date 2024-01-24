@@ -1,4 +1,4 @@
-# :package_description
+# VendorName\Skeleton
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -14,7 +14,7 @@ This repo can be used to scaffold a Laravel package. Follow these steps to get s
 4. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
 ---
 <!--/delete-->
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+:package_description
 
 ## Support us
 

@@ -20,13 +20,16 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
-        $root_prefix = Config::get('skeleton.root_prefix', '');
+        $root_prefix = Config::get(':vendor_slug.skeleton.root_prefix', '');
 
-        $this->routes(function () use (&$root_prefix) {
-            Route::prefix("{$root_prefix}api")
+        $this->routes(function () {
+
+            Route::prefix("api")
                 ->middleware('api')
-                ->namespace($this->namespace)
                 ->group(__DIR__.'/../routes/api.php');
+
+            Route::middleware('web')
+                ->group(__DIR__.'/../routes/web.php');
         });
     }
 

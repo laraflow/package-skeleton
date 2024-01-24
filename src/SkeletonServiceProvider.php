@@ -3,8 +3,8 @@
 namespace VendorName\Skeleton;
 
 use Illuminate\Support\ServiceProvider;
-use VendorName\Skeleton\Commands\InstallCommand;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use VendorName\Skeleton\Commands\InstallSkeletonCommand;
+use Illuminate\Support\Facades\Blade;
 
 class SkeletonServiceProvider extends ServiceProvider
 {
@@ -16,11 +16,12 @@ class SkeletonServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/skeleton.php', 'fintech.skeleton'
+            __DIR__ . '/../config/skeleton.php', ':vendor_slug.skeleton'
         );
 
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
+        $this->app->register(EventServiceProvider::class);
     }
 
     /**
@@ -28,28 +29,53 @@ class SkeletonServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'skeleton');
+
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'skeleton');
+
+        Blade::componentNamespace('VendorName\\Skeleton\\Views\\Components', 'skeleton');
+
+        $this->loadPublishOptions();
+
+        $this->registerCommands();
+
+    }
+
+    private function loadPublishOptions()
+    {
+        // Package Configuration
         $this->publishes([
-            __DIR__.'/../config/skeleton.php' => config_path('fintech/skeleton.php'),
-        ]);
+            __DIR__ . '/../config/skeleton.php' => config_path(':vendor_slug/skeleton.php'),
+        ], 'skeleton-config');
 
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-
-        $this->loadTranslationsFrom(__DIR__.'/../lang', 'skeleton');
-
+        //Package Translation
         $this->publishes([
-            __DIR__.'/../lang' => $this->app->langPath('vendor/skeleton'),
-        ]);
+            __DIR__ . '/../lang' => $this->app->langPath('vendor/skeleton'),
+        ], 'skeleton-lang');
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'skeleton');
-
+        //Package Blade Views
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/skeleton'),
-        ]);
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/:vendor_slug/skeleton'),
+        ], 'skeleton-view');
 
+        //Package Public Assets
+        $this->publishes([
+            __DIR__.'/../public' => public_path('vendor/skeleton'),
+        ], 'skeleton-asset');
+
+        //Package Database Migrations
+        $this->publishes([
+            __DIR__.'/../database/migrations/' => database_path('migrations')
+        ], 'skeleton-migrations');
+    }
+
+    private function registerCommands()
+    {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                InstallCommand::class,
-                SkeletonCommand::class,
+                InstallSkeletonCommand::class
             ]);
         }
     }
