@@ -58,12 +58,12 @@ class SkeletonServiceProvider extends ServiceProvider
         //Package Blade Views
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/vendor/:vendor_slug/skeleton'),
-        ], 'skeleton-view');
+        ], 'skeleton-views');
 
         //Package Public Assets
         $this->publishes([
             __DIR__.'/../public' => public_path('vendor/skeleton'),
-        ], 'skeleton-asset');
+        ], 'skeleton-assets');
 
         //Package Database Migrations
         $this->publishes([
