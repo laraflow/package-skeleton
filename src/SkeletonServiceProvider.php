@@ -2,9 +2,12 @@
 
 namespace VendorName\Skeleton;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use VendorName\Skeleton\Commands\InstallSkeletonCommand;
-use Illuminate\Support\Facades\Blade;
+use VendorName\Skeleton\Providers\EventServiceProvider;
+use VendorName\Skeleton\Providers\RepositoryServiceProvider;
+use VendorName\Skeleton\Providers\RouteServiceProvider;
 
 class SkeletonServiceProvider extends ServiceProvider
 {

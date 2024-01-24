@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace VendorName\Skeleton\Providers;
 
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\Facades\Config;

@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 if(Config::get('skeleton.enabled')) {
     Route::prefix('skeleton')->name('skeleton.')->group(function () {
+        Route::get('/', function () {
+            return \Inertia\Inertia::render('index');
+        });
+
         //DO NOT REMOVE THIS LINE//
     });
 }

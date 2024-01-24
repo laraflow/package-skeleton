@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace VendorName\Skeleton\Providers;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;

@@ -16,4 +16,6 @@ mix.setPublicPath('public')
     .js('resources/js/app.js', 'public/js')
     .sass('resources/scss/app.scss', 'public/css')
     .vue({ version: 3 })
-    .extract();
+    .extract()
+    .version()
+    .sourceMaps();
