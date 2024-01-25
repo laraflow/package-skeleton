@@ -6,9 +6,9 @@ use Illuminate\Console\Command;
 
 class InstallSkeletonCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'skeleton:install';
 
-    public $description = 'My command';
+    public $description = 'To load configuration of skeleton module';
 
     public function handle(): int
     {
