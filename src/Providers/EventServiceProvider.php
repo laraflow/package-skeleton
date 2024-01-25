@@ -14,7 +14,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array<class-string, array<int, class-string>>
      */
-    protected array $listen = [];
+    protected $listen = [];
 
     /**
      * Determine if events and listeners should be automatically discovered.
