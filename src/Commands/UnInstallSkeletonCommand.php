@@ -4,11 +4,11 @@ namespace VendorName\Skeleton\Commands;
 
 use Illuminate\Console\Command;
 
-class InstallCommand extends Command
+class UnInstallSkeletonCommand extends Command
 {
-    public $signature = 'skeleton:install';
+    public $signature = 'skeleton:uninstall';
 
-    public $description = 'My command';
+    public $description = 'To remove configuration of skeleton module';
 
     public function handle(): int
     {
